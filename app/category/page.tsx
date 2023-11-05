@@ -5,73 +5,68 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 interface PageProps {
-    params: {
-      category: string;
-    };
-  }
+  params: {
+    category: string;
+  };
+}
 
-interface MealItem {
-    idMeal: string;
-    strMealThumb: string;
-    strMeal: string;
-  }
+interface CategoryItem {
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+  // Add other properties as needed
+}
 
 function Page({ params }: PageProps) {
-    const [currentCategory, setCurrentCategory] = useState<MealItem[]>([]);
+  const [currentCategory, setCurrentCategory] = useState<CategoryItem[]>([]);
 
+  const FetchAllCategories = async () => {
+    try {
+      const res = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+      const data = await res.json();
+      setCurrentCategory(data.categories);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  }
 
-    const FetchAllCategories = async () => {
-        try {
-          const res = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
-          const data = await res.json();
-          setCurrentCategory(data.categories);
-        } catch (error) {
-          console.error('Error fetching categories:', error);
-        }
-      }
+  useEffect(() => {
+    FetchAllCategories()
+  }, []);
 
-    useEffect(() => {
-        FetchAllCategories()
-    }, [])
-    return (
-        <section className=''>
-            {/* CATEGORY SCROLLBAR */}
-            <HeaderCategoryScroll />
+  return (
+    <section className=''>
+      {/* CATEGORY SCROLLBAR */}
+      <HeaderCategoryScroll />
 
-            {/* ALL CARDS */}
-            <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px]">
-               {
-                currentCategory && currentCategory.map((item) => (
-                    <div key={item.strCategory}>
-                     {/* CARD MOCK */}
-                     <Link href={`/category/${item.strCategory}`}>
-                <div className="max-h-[230px] bg-[#353842] p-[10px] rounded-xl">
-                    {/* IMAGE */}
-                    <div className="max-w-[146px] max-h-[141px] flex justify-center items-center">
-                    <Image
+      {/* ALL CARDS */}
+      <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px]">
+        {currentCategory && currentCategory.map((item) => (
+          <div key={item.strCategory}>
+            {/* CARD MOCK */}
+            <Link href={`/category/${item.strCategory}`}>
+              <div className="max-h-[230px] bg-[#353842] p-[10px] rounded-xl">
+                {/* IMAGE */}
+                <div className="max-w-[146px] max-h-[141px] flex justify-center items-center">
+                  <Image
                     src={item.strCategoryThumb}
-                    alt={`${item.strCategoryDescription}`}
+                    alt={item.strCategoryDescription}
                     width={146}
                     height={141}
-                    />
-                    </div>
+                  />
+                </div>
 
-                    {/* CONTEXT */}
-                    <div className="py-2">
-                        <h1 className='text-[13px] font-light italic text-center'>{item.strCategory}</h1>
-                    </div>
+                {/* CONTEXT */}
+                <div className="py-2">
+                  <h1 className='text-[13px] font-light italic text-center'>{item.strCategory}</h1>
                 </div>
-                </Link>
-                </div>
-                ))
-               }
-            </div>
-          
-        </section>
-        
-       
-    );
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default Page;
-
