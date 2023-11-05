@@ -25,7 +25,7 @@ function RandomDish() {
 
   // Function to extract the first two tags from strTags
   const getFirstTwoTags = (tags: string | null): string[] => {
-    return tags?.split(',').slice(0, 2).map(tag => tag.trim()) || [];
+    return tags ? tags.split(',').slice(0, 2).map(tag => tag.trim()) : [];
   };
 
   return (
