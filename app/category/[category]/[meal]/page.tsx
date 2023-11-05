@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-function page({ params }) {
+function Page({ params }) {
   const { meal } = params;
   //use state
   const [mealData, setMealData] = useState([]);
@@ -149,4 +149,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default Page;
