@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #2C2F38;
+  --light-gray-text: #686F82;
+  --input-bg-color: #252830;
+
+}
+
+body {
+    background-color: var(--background);
+    color: #fff;
+}
