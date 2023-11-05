@@ -3,8 +3,16 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface MealData {
+  idCategory: number;
+  strCategoryThumb: string;
+  strCategory: string;
+}
+
+
+
 function HeaderCategoryScroll() {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<MealData[]>([]);
   
   const fetchCategories = async () => {
     try {

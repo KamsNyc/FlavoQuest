@@ -2,8 +2,12 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
+interface MealArea {
+  strArea: string;
+}
+
 function DishesByArea() {
-  const [areas, setAreas] = useState([]);
+  const [areas, setAreas] = useState<MealArea[]>([]);
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ function DishesByArea() {
   const flagAPI = 'https://flagsapi.com/';
 
   // Mapping of country names to country codes
-  const countryCodeMapping = {
+  const countryCodeMapping: Record<string, string> = {
     "American": "US",
     "British": "GB",
     "Canadian": "CA",
