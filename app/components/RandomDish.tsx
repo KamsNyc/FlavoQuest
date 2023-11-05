@@ -41,12 +41,12 @@ function RandomDish() {
           </h1>
           {/* TAGS */}
           <div className="flex justify-center items-center text-white text-[10px] gap-[10px] uppercase font-light italic pt-[2px]">
-            {getFirstTwoTags(singleMeal?.strTags).map(tag => (
-              <span key={tag}>
-                <span className="text-white">#</span>  {tag}
-              </span>
-            ))}
-          </div>
+  {getFirstTwoTags(singleMeal?.strTags as string | null).map(tag => (
+    <span key={tag}>
+      <span className="text-white">#</span>  {tag}
+    </span>
+  ))}
+</div>
         </div>
         {/* IMAGE CONTAINER */}
         <div className="object-contain pt-[15px] flex items-center justify-center relative">
