@@ -117,8 +117,8 @@ function Page({ params }: Params) {
                 {/* BOTTOM SECTION CARDS CONTAINER */}
                 <div className="px-[20px] pt-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll">
                   {Array.from(
-                    { length: 20 },
-                    (_, i) => item[`strIngredient${i + 1}`]
+  { length: 20 },
+  (_, i) => (item as any)[`strIngredient${i + 1}`]
                   )
                     .filter((ingredient) => ingredient && ingredient.trim() !== "")
                     .map((ingredient, index) => (
