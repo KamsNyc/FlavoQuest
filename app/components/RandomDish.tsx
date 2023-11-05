@@ -1,11 +1,14 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 interface Meal {
   strMeal: string;
+  idMeal: number;
   strMealThumb: string;
   strTags: string | null;
+  strCategory: string | null;
 }
 
 function RandomDish() {
@@ -59,7 +62,9 @@ function RandomDish() {
             className='rounded-xl p-2'
           />
           {/* VIEW CURRENT ITEM */}
-          <div className="absolute bottom-0 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white py-1 px-2 rounded-xl text-black cursor-pointer opacity-60">HOW ITS MADE</div>
+          <Link href={`/category/${singleMeal?.strCategory}/${singleMeal?.idMeal}`} className="absolute bottom-0 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white py-1 px-2 rounded-xl text-black cursor-pointer opacity-60">
+            HOW ITS MADE
+          </Link>
         </div>
       </div>
     </section>

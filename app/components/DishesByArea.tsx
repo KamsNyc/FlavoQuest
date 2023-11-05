@@ -10,6 +10,15 @@ function DishesByArea() {
   const [areas, setAreas] = useState<MealArea[]>([]);
   const [showMore, setShowMore] = useState(false);
 
+  const [areaMeals, setAreaMeals] = useState([])
+
+  const FetchAreaMeals = async () => {
+    const res = await fetch('www.themealdb.com/api/json/v1/1/filter.php?a=Canadian')
+    const areaMealData = res.json();
+    console.log(areaMealData)
+  }
+
+
   useEffect(() => {
     // Fetch the list of areas from the MealDB API
     fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
@@ -17,6 +26,8 @@ function DishesByArea() {
       .then((data) => {
         // Store the list of areas in the state
         setAreas(data.meals);
+        //running FetchAreaMeals Function
+        FetchAreaMeals
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -55,7 +66,7 @@ function DishesByArea() {
     "Vietnamese": "VN"
   };
 
-  // Define the number of items to initially display and the number to show on "View More" click
+
   const initialDisplayCount = 4;
   const additionalDisplayCount = 4;
 

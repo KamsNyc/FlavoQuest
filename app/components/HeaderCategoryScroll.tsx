@@ -35,7 +35,7 @@ function HeaderCategoryScroll() {
         {/* MAIN SECTION HEADING */}
         <h1 className="font-medium text-[20px] ">Categories</h1>
         {/* ALL ICON AND TEXT */}
-        <span className="font-medium text-[13px] gap-2 flex items-center cursor-pointer">All <Image src="/RightArrow.png" alt="right arrow icon" width={16} height={16} /></span>
+        <span className="font-medium text-[13px] gap-2 flex items-center cursor-pointer"><Link href={`/category`}>All</Link> <Image src="/RightArrow.png" alt="right arrow icon" width={16} height={16} /></span>
       </div>
 
       {/* BADGES BOTTOMSIDE */}
