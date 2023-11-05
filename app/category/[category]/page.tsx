@@ -10,9 +10,15 @@ interface PageProps {
     };
   }
 
+interface MealItem {
+    idMeal: string;
+    strMealThumb: string;
+    strMeal: string;
+  }
+
 function Page({ params }: PageProps) {
     const {category} = params;
-    const [currentItem, setCurrentItem] = useState([])
+    const [currentItem, setCurrentItem] = useState<MealItem[]>([]);
 
     const FetchCategoryItem = async () => {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
