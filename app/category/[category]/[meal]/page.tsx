@@ -59,7 +59,7 @@ function Page({ params }: Params) {
             <div className="flex item-center justify-center rounded-full overflow-hidden pt-[110px]">
               <Image
                 src={item.strMealThumb}
-                alt={item.strTags}
+                alt='test'
                 width={210}
                 height={210}
                 className="max-w-[210px] max-h-[210px] object-cover rounded-full border-2 border-[#FF7269]"
