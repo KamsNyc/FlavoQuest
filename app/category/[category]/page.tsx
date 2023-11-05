@@ -4,7 +4,13 @@ import MealCard from '@/app/components/MealCard';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-function Page({params}) {
+interface PageProps {
+    params: {
+      category: string;
+    };
+  }
+
+function Page({ params }: PageProps) {
     const {category} = params;
     const [currentItem, setCurrentItem] = useState([])
 
