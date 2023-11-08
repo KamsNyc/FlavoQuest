@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 interface MealArea {
@@ -71,7 +72,7 @@ function DishesByArea() {
   const additionalDisplayCount = 4;
 
   return (
-    <section className="mt-[23px] mb-10">
+    <section className="mt-[23px] mb-24">
       {/* HEADING/ALL BUTTON TOPSIDE */}
       <div className="flex justify-between items-center">
         {/* MAIN SECTION HEADING */}
@@ -93,12 +94,14 @@ function DishesByArea() {
           areas.slice(0, showMore ? areas.length : initialDisplayCount).map((area) => (
             <div key={area.strArea} className="flex items-center justify-center cursor-pointer">
               <div className="rounded-full h-[60px] w-[60px] flex items-center justify-center overflow-hidden">
+                <Link href={`/area/${area.strArea}`}>
                 <Image
                   src={`${flagAPI}${countryCodeMapping[area.strArea]}/flat/64.png`}
                   alt={`${area.strArea} flag`}
                   width={60}
                   height={60}
                 />
+                </Link>
               </div>
             </div>
           ))}

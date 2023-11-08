@@ -42,7 +42,7 @@ function Page({ params }: PageProps) {
             <HeaderCategoryScroll />
 
             {/* ALL CARDS */}
-            <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px]">
+            <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px] mb-24">
                {
                 currentItem && currentItem.map((item) => (
                     <div key={item.idMeal}>
@@ -50,12 +50,13 @@ function Page({ params }: PageProps) {
                      <Link href={`/category/Chicken/${item.idMeal}`}>
                 <div className="max-h-[230px] bg-[#353842] p-[10px] rounded-xl">
                     {/* IMAGE */}
-                    <div className="max-w-[146px] max-h-[141px] flex justify-center items-center">
+                    <div className="max-full max-h-[141px] flex justify-center items-center">
                     <Image
                     src={item.strMealThumb}
                     alt={`${item.strMeal}`}
                     width={146}
                     height={141}
+                    className='rounded-lg'
                     />
                     </div>
 

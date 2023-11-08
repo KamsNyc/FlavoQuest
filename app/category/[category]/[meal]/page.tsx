@@ -88,24 +88,28 @@ function Page({ params }: Params) {
 
               {/* STEPS CONTAINER */}
               <section className="pt-[15px]">
-                {/* HEADING */}
-                <h3 className="py-2 text-center uppercase text-[--light-gray-text] font-medium">
-                  Instructions
-                </h3>
-                <ScrollArea className="h-[300px] w-full rounded-md border border-white/10 p-4">
-                  {item.strInstructions}
-                </ScrollArea>
-              </section>
+  <h3 className="py-2 text-center uppercase text-[--light-gray-text] font-medium">
+    Instructions
+  </h3>
+  <ScrollArea className="h-[300px] w-full rounded-md border border-white/10 p-4">
+    {item.strInstructions.split(/\r?\n/).map((step, index) => (
+      <p key={index}>
+        <span>{index + 1})</span>
+        {step}
+      </p>
+    ))}
+  </ScrollArea>
+</section>
 
               {/* INGREDIENTS CONTAINER */}
               <div className="mt-8">
                 {/* HEADING SECTION */}
-                <div className="flex justify-between items-center px-[20px]">
+                <div className="flex justify-between items-center px-[20px] ">
                   {/* MAIN SECTION HEADING */}
                   <h1 className="font-medium text-[20px]">Ingredients</h1>
                   {/* ALL ICON AND TEXT */}
                   <span className="font-medium text-[13px] gap-2 flex items-center cursor-pointer">
-                    <Link href={`/category`}>Search By Ingredients</Link>{" "}
+                    <Link href={`/category`}>All Ingredients</Link>{" "}
                     <Image
                       src="/RightArrow.png"
                       alt="right arrow icon"
@@ -115,7 +119,7 @@ function Page({ params }: Params) {
                   </span>
                 </div>
                 {/* BOTTOM SECTION CARDS CONTAINER */}
-                <div className="px-[20px] pt-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll">
+                <div className="px-[20px] py-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll mb-24">
                   {Array.from(
   { length: 20 },
   (_, i) => (item as any)[`strIngredient${i + 1}`]
@@ -147,7 +151,7 @@ function Page({ params }: Params) {
       ))}
       {/*  __________BACKGROUND ELEMENTS__________ */}
       {/* BACKGROUND TOP ROUNDED BLOCK */}
-      <div className="absolute bottom-0 z-[1] bg-[#272A32] w-full h-[75%] rounded-t-[6rem]" />
+      <div className="absolute bottom-0 z-[1] bg-[#272A32] w-full h-[80%] rounded-t-[6rem]" />
       {/* BACKGROUND TEXTURE ABSOLUTE */}
       <Image
         src="/SmokeBackground.png"

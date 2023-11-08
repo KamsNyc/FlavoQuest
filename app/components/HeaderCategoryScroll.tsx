@@ -39,7 +39,7 @@ function HeaderCategoryScroll() {
       </div>
 
       {/* BADGES BOTTOMSIDE */}
-      <div className="px-[20px] pt-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll  ">
+      <div className="px-[20px] pt-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll no-scrollbar">
         {/* MY BUTTONS */}
         {categories.map((category) => (
           <div key={category.idCategory} className="cursor-pointer bg-white/10 py-[12px] px-[15px] font-light italic text-[#8E94A4] text-[15px]  rounded-[10px] flex items-center gap-3 ">

@@ -40,7 +40,7 @@ function Page({ params }: PageProps) {
       <HeaderCategoryScroll />
 
       {/* ALL CARDS */}
-      <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px]">
+      <div className="mt-10 px-[20px] grid grid-cols-2 gap-x-[15px] gap-y-[15px] mb-24">
         {currentCategory && currentCategory.map((item) => (
           <div key={item.strCategory}>
             {/* CARD MOCK */}
