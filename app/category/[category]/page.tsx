@@ -50,7 +50,7 @@ function Page({ params }: PageProps) {
                      <Link href={`/category/Chicken/${item.idMeal}`}>
                 <div className="max-h-[230px] bg-[#353842] p-[10px] rounded-xl">
                     {/* IMAGE */}
-                    <div className="max-full max-h-[141px] flex justify-center items-center">
+                    <div className="w-full max-h-[141px] flex justify-center items-center">
                     <Image
                     src={item.strMealThumb}
                     alt={`${item.strMeal}`}

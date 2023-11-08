@@ -47,12 +47,13 @@ function Page({ params }: PageProps) {
             <Link href={`/category/${item.strCategory}`}>
               <div className="max-h-[230px] bg-[#353842] p-[10px] rounded-xl">
                 {/* IMAGE */}
-                <div className="max-w-[146px] max-h-[141px] flex justify-center items-center">
+                <div className="w-full rounded-lg h-auto flex justify-center items-center">
                   <Image
                     src={item.strCategoryThumb}
                     alt={item.strCategoryDescription}
                     width={146}
                     height={141}
+                    property=''
                   />
                 </div>
 

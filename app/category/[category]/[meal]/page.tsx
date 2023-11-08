@@ -13,6 +13,7 @@ interface Meal {
   strCategory: string;
   strArea: string;
   strInstructions: string;
+  strYoutube: string
 }
 
 interface Params {
@@ -50,16 +51,16 @@ function Page({ params }: Params) {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {mealData.map((item) => (
         <section key={item.idMeal}>
           {/* MAIN CONTAIN CONTAINER +z index 3 */}
-          <section className="z-[3] relative">
+          <section className="z-[3] relative ">
             {/* IMAGE CONTAINER */}
             <div className="flex item-center justify-center rounded-full overflow-hidden pt-[110px]">
               <Image
                 src={item.strMealThumb}
-                alt='test'
+                alt="test"
                 width={210}
                 height={210}
                 className="max-w-[210px] max-h-[210px] object-cover rounded-full border-2 border-[#FF7269]"
@@ -67,7 +68,7 @@ function Page({ params }: Params) {
             </div>
 
             {/* TEXT CONTAINER */}
-            <section className="mt-[22px] px-[44px]">
+            <section className="mt-[22px] px-[44px] ">
               {/* MEAL NAME */}
               <h1 className="text-center text-[20px] italic font-light">
                 {item.strMeal}
@@ -88,23 +89,23 @@ function Page({ params }: Params) {
 
               {/* STEPS CONTAINER */}
               <section className="pt-[15px]">
-  <h3 className="py-2 text-center uppercase text-[--light-gray-text] font-medium">
-    Instructions
-  </h3>
-  <ScrollArea className="h-[300px] w-full rounded-md border border-white/10 p-4">
-    {item.strInstructions.split(/\r?\n/).map((step, index) => (
-      <p key={index}>
-        <span>{index + 1})</span>
-        {step}
-      </p>
-    ))}
-  </ScrollArea>
-</section>
+                <h3 className="py-2 text-center uppercase text-[--light-gray-text] font-medium">
+                  Instructions
+                </h3>
+                <ScrollArea className="h-[300px] w-full rounded-md border border-white/10 p-4">
+                  {item.strInstructions.split(/\r?\n/).map((step, index) => (
+                    <p key={index}>
+                      <span>{index + 1})</span>
+                      {step}
+                    </p>
+                  ))}
+                </ScrollArea>
+              </section>
 
               {/* INGREDIENTS CONTAINER */}
-              <div className="mt-8">
+              <section className="mt-8 ">
                 {/* HEADING SECTION */}
-                <div className="flex justify-between items-center px-[20px] ">
+                <div className="flex justify-between items-center px-[10px] ">
                   {/* MAIN SECTION HEADING */}
                   <h1 className="font-medium text-[20px]">Ingredients</h1>
                   {/* ALL ICON AND TEXT */}
@@ -119,14 +120,20 @@ function Page({ params }: Params) {
                   </span>
                 </div>
                 {/* BOTTOM SECTION CARDS CONTAINER */}
-                <div className="px-[20px] py-[10px] flex items-center gap-3 overflow-hidden overflow-x-scroll mb-24">
+                <div className="py-[18px] flex items-center gap-3 overflow-hidden overflow-x-scroll">
                   {Array.from(
-  { length: 20 },
-  (_, i) => (item as any)[`strIngredient${i + 1}`]
+                    { length: 20 },
+                    (_, i) => (item as any)[`strIngredient${i + 1}`]
                   )
-                    .filter((ingredient) => ingredient && ingredient.trim() !== "")
+                    .filter(
+                      (ingredient) => ingredient && ingredient.trim() !== ""
+                    )
                     .map((ingredient, index) => (
-                      <Link href="/" key={index} className="flex items-center gap-2 pb-2">
+                      <Link
+                        href="/"
+                        key={index}
+                        className="flex items-center gap-2 pb-2"
+                      >
                         {/* INGREDIENT IMAGE */}
                         <div className="w-[24px] h-[24px]">
                           <Image
@@ -144,7 +151,23 @@ function Page({ params }: Params) {
                       </Link>
                     ))}
                 </div>
-              </div>
+
+                {/* VIDEO */}
+                <section className="mb-24 pt-10">
+                <h1 className="font-medium text-[20px]">How to video:</h1>
+  <div className="aspect-w-16 aspect-h-9 mt-3">
+    <iframe
+      title={`how to make ${item.strMeal}`}
+      src={`https://www.youtube.com/embed/${item.strYoutube.split('v=')[1]}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="rounded-lg"
+    ></iframe>
+  </div>
+</section>
+              </section>
+  
             </section>
           </section>
         </section>
@@ -152,14 +175,14 @@ function Page({ params }: Params) {
       {/*  __________BACKGROUND ELEMENTS__________ */}
       {/* BACKGROUND TOP ROUNDED BLOCK */}
       <div className="absolute bottom-0 z-[1] bg-[#272A32] w-full h-[80%] rounded-t-[6rem]" />
-      {/* BACKGROUND TEXTURE ABSOLUTE */}
-      <Image
-        src="/SmokeBackground.png"
-        alt="background texture"
-        layout="fill"
-        objectFit="cover"
-        className="absolute top-0 left-0 w-full h-full z-0 opacity-90"
-      />
+            {/* BACKGROUND TEXTURE ABSOLUTE */}
+            <Image
+    src="/SmokeBackground.png"
+    alt="background texture"
+    layout="fill"
+    objectFit="cover"
+    className="absolute top-0 left-0 w-full h-full z-0 opacity-90"
+  />
     </div>
   );
 }
